@@ -10,11 +10,11 @@ The figures below show example recordings for the letter **B (Uppercase)** of Pa
 
 **Planar view (X–Y with force colour):**
 
-![B Planar View](Some_figures/B_Uppercase.png)
+![B Planar View](Some_figures/B_2D.png)
 
 **3D view (X–Y plane facing forward, time increasing into depth):**
 
-![B 3D View](Some_figures/B_Uppercase_3D.png)
+![B 3D View](Some_figures/B_3D.png)
 
 ---
 
