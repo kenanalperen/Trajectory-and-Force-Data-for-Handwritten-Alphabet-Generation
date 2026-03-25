@@ -25,6 +25,7 @@ The figures below show example recordings for the letter **A (Lowercase)**, illu
 - **Task:** Participants traced alphabet characters (Font: Inter Regular) displayed on screen, controlling a simulated robot on a 2D surface 
 - **Screen:** 13.3-inch display at 3840×2160 resolution (pixel size ≈ 0.077 mm)
 - **Active workspace:** 37.59 × 37.59 mm per each square
+- **Sampling Rate:** 40 Hz
 
 ### Participants
 - **Total participants:** 22
