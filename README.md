@@ -6,7 +6,7 @@ This repository contains a dataset of human handwriting trajectory and stylus fo
 
 ## Example Data Visualisations
 
-The figures below show example recordings for the letter **A (Lowercase)**, illustrating both the planar trajectory and the 3D time-depth view. Colour encodes the applied force: **blue = minimum force**, **red = maximum force**.
+The figures below show example recordings for the letter **B (Uppercase)** of Participant ID 2 repetition 2 in 2D and 3D views, illustrating both the planar trajectory and the 3D time-depth view. Colour encodes the applied force: **blue = minimum force**, **red = maximum force**.
 
 **Planar view (X–Y with force colour):**
 
