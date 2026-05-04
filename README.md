@@ -100,72 +100,74 @@ The following statistics were computed across all 3,142 demonstration trajectori
 | Y | 0.00 – 37.03 mm | 37.03 mm |
 
 ---
+## MATLAB Scripts
 
-## How to Use `Data_Analysis.m`
-
-### Requirements
-- MATLAB (R2019b or later recommended)
-- No additional toolboxes required
-
-### Setup
-1. Clone or download this repository (at least have folder Experiment_Character_Data_csv in the same location as Data_Analysis.m script)
-2. Open MATLAB and set your working directory to the repository root:
-3. Open `Data_Analysis.m` in the Live Editor:
-   - Go to **Home → Open → Data_Analysis.m**
-   - When prompted, click **"Convert"** to open as a Live Script
+To run the MATLAB scripts, follow these steps:
+1. Clone or download this repository
+2. Open MATLAB and set your working directory to the repository root
+3. Open your desired script via **Home → Open → [script_name].m**
 
 ---
 
-### Section 1 — Load the Data
+### 1 — `Data_Analysis.m`: Inspecting Recorded Data
 
-Run Section 1 to load all 52 CSV files into a MATLAB struct called `exp_data`.
+This script allows you to inspect the raw human input data recorded during the experiments.
 
-The struct is organised hierarchically:
-```
-exp_data
- └── <Letter>_<Case>          e.g.  exp_data.L_Lowercase
-      └── P<n>_<rep>          e.g.  exp_data.L_Lowercase.P7_1
-           ├── .x             X positions (mm)
-           ├── .y             Y positions (mm)
-           ├── .t             Time values (s)
-           └── .f             Force values (N)
-```
-
-The data is cached after the first load. Re-running Section 1 skips the reload unless you first type `clear exp_data` in the Command Window.
-
----
-
-### Section 2 — Browse Individual Trajectories
-
-Edit the settings at the top of the script to select which character to inspect:
+- Open the script via **Home → Open → Data_Analysis.m**
+- Edit the settings at the top of the script to select the character you want to inspect:
 
 **Example — inspect all Lowercase L recordings:**
-
 ```matlab
 VIS_CHARACTER = 'L';          % Any letter A–Z
 VIS_CASE      = 'Lowercase';  % 'Uppercase' or 'Lowercase'
 VIS_MODE      = 2;            % 1 = three 2D panels  |  2 = 3D view
 ```
-
-Run Section 2 to open the interactive browser. The figure displays the selected character's trajectory coloured by applied force (blue = low force, red = high force). An info panel on the right shows per-entry statistics including duration, force range, and path length.
-
-
-**To access a specific entry directly** (e.g. Participant 7, Repetition 1 of Lowercase L):
-```matlab
-e = exp_data.L_Lowercase.P7_1;
-plot(e.x, e.y);        % 2D trajectory
-figure; plot(e.t, e.f) % force over time
-```
+- Run the script. It will display all available data for the selected character and case combination. You can navigate between figures using the **Next** and **Back** buttons.
+- Note: the figure initially displays a 2D view. Use the **3D Rotate** tool to also visualise the time axis.
 
 ---
 
-### Section 3 — Dataset Statistics
+### 2 — `Robot_Learning_Code.m`: Generating Robot Paths
 
-Run Section 3 to print a full statistical summary of the dataset to the Command Window, including:
+This script displays the final trajectories produced by the robot learning algorithm, which can be used as reference paths for robotic manipulation tasks.
 
-- Per-character entry counts, mean duration, mean force, and mean path length
-- Overall dataset summary (mean, std, min, max) across all trajectories
-- Full workspace X/Y range
+- Open the script via **Home → Open → Robot_Learning_Code.m**
+- Edit the following line to select the desired character and case combination:
+
+```matlab
+CHAR_ID = 'E_Uppercase';
+```
+- Run the script. It will produce two figures: one showing the output of the robot learning algorithm, and another showing the processed version ready for use in robotic tasks.
+
+---
+
+### 3 — Supporting Scripts
+
+**`MixtureGaussians.m`** and **`SkillGeneralisation.m`**: These contain helper functions called by `Robot_Learning_Code.m`. They cannot be run independently — place them in the same folder so they can be located automatically.
+
+**`Prepare_4D_mat_file.m`**: Prepares the raw human input data for the robot learning algorithm. You do not need to run this script, as the generated files are already included in the `Data_for_RL_4D` folder. It is provided for researchers who wish to reproduce or adapt the data preparation pipeline.
+
+---
+
+## CSV Data Folders
+
+There are three folders containing character data in `.csv` format, each serving a different purpose:
+
+1. **`Experiment_Character_Data_csv`**: Raw data recorded directly from human user studies — the unprocessed human input. This is intended for researchers who wish to use the original recordings to train their own algorithms.
+
+2. **`Data_for_RL_4D`**: Processed human input data using time as an additional dimension, with normalised time handled separately, giving four dimensions: x (mm), y (mm), force (N), and time (s). Also includes the first and second derivatives of these signals with respect to normalised time, for use with `Robot_Learning_Code.m`. These files were generated using `Prepare_4D_mat_file.m`.
+
+3. **`RL_Generated_Character_Data_csv`**: Trajectories generated by the robot learning algorithm, intended for use as reference paths in robotic motion tasks.
+
+---
+
+## Videos of the Setup
+
+### Data Collection Setup
+![Data Collection Setup](Some_figures/data_collection.mp4)
+
+### User Evaluation Setup
+![User Evaluation Setup](Some_figures/evaluation.mp4)
 
 ---
 
