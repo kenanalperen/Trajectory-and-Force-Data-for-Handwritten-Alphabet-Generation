@@ -164,10 +164,11 @@ There are three folders containing character data in `.csv` format, each serving
 ## Videos of the Setup
 
 ### Data Collection Setup
-![Data Collection Setup](Some_figures/data_collection.mp4)
+[![Data Collection Setup](https://youtu.be/VGdJzMhiSGs)](https://youtu.be/VGdJzMhiSGs)
+
 
 ### User Evaluation Setup
-![User Evaluation Setup](Some_figures/evaluation.mp4)
+[![Data Collection Setup](https://youtu.be/gaQnLLVILe8)](https://youtu.be/gaQnLLVILe8)
 
 ---
 
