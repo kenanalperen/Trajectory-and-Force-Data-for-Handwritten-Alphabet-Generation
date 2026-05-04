@@ -109,7 +109,7 @@ To run the MATLAB scripts, follow these steps:
 
 ---
 
-### 1 — `Data_Analysis.m`: Inspecting Recorded Data
+### 1 - `Data_Analysis.m`: Inspecting Recorded Data
 
 This script allows you to inspect the raw human input data recorded during the experiments.
 
@@ -127,7 +127,7 @@ VIS_MODE      = 2;            % 1 = three 2D panels  |  2 = 3D view
 
 ---
 
-### 2 — `Robot_Learning_Code.m`: Generating Robot Paths
+### 2 - `Robot_Learning_Code.m`: Generating Robot Paths
 
 This script displays the final trajectories produced by the robot learning algorithm, which can be used as reference paths for robotic manipulation tasks.
 
@@ -141,7 +141,7 @@ CHAR_ID = 'E_Uppercase';
 
 ---
 
-### 3 — Supporting Scripts
+### 3 - Supporting Scripts
 
 **`MixtureGaussians.m`** and **`SkillGeneralisation.m`**: These contain helper functions called by `Robot_Learning_Code.m`. They cannot be run independently — place them in the same folder so they can be located automatically.
 
