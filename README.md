@@ -153,7 +153,7 @@ CHAR_ID = 'E_Uppercase';
 
 There are three folders containing character data in `.csv` format, each serving a different purpose:
 
-1. **`Experiment_Character_Data_csv`**: Raw data recorded directly from human user studies — the unprocessed human input. This is intended for researchers who wish to use the original recordings to train their own algorithms.
+1. **`Experiment_Character_Data_csv`**: Raw data recorded directly from human user studies (unprocessed human input). This is intended for researchers who wish to use the original recordings to train their own algorithms.
 
 2. **`Data_for_RL_4D`**: Processed human input data using time as an additional dimension, with normalised time handled separately, giving four dimensions: x (mm), y (mm), force (N), and time (s). Also includes the first and second derivatives of these signals with respect to normalised time, for use with `Robot_Learning_Code.m`. These files were generated using `Prepare_4D_mat_file.m`.
 
@@ -164,11 +164,10 @@ There are three folders containing character data in `.csv` format, each serving
 ## Videos of the Setup
 
 ### Data Collection Setup
-[![Data Collection Setup](https://youtu.be/VGdJzMhiSGs)](https://youtu.be/VGdJzMhiSGs)
-
+[![Data Collection Setup](https://img.youtube.com/vi/VGdJzMhiSGs/0.jpg)](https://youtu.be/VGdJzMhiSGs)
 
 ### User Evaluation Setup
-[![Data Collection Setup](https://youtu.be/gaQnLLVILe8)](https://youtu.be/gaQnLLVILe8)
+[![User Evaluation Setup](https://img.youtube.com/vi/gaQnLLVILe8/0.jpg)](https://youtu.be/gaQnLLVILe8)
 
 ---
 
