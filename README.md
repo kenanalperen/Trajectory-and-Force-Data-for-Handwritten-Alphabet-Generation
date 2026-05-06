@@ -143,7 +143,7 @@ CHAR_ID = 'E_Uppercase';
 
 ### 3 - Supporting Scripts
 
-**`MixtureGaussians.m`** and **`SkillGeneralisation.m`**: These contain helper functions called by `Robot_Learning_Code.m`. They cannot be run independently — place them in the same folder so they can be located automatically.
+**`MixtureGaussians.m`** and **`SkillGeneralisation.m`**: These contain helper functions called by `Robot_Learning_Code.m`. They cannot be run independently, place them in the same folder so they can be located automatically.
 
 **`Prepare_4D_mat_file.m`**: Prepares the raw human input data for the robot learning algorithm. You do not need to run this script, as the generated files are already included in the `Data_for_RL_4D` folder. It is provided for researchers who wish to reproduce or adapt the data preparation pipeline.
 
