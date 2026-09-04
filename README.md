@@ -6,6 +6,16 @@ This repository contains a dataset of human handwriting trajectory and stylus fo
 
 ---
 
+## Repository Structure
+
+The repository is organised into three main folders:
+
+- **`Experiment Data/`** — Human demonstration data, processed data for robot learning, and robot-generated character trajectories.
+- **`Some_figures/`** — Figures and videos used to illustrate the dataset, experimental setup, and results.
+- **`Scripts Used/`** — MATLAB scripts and supporting documentation used for data analysis, preprocessing, and robot learning.
+
+---
+
 ## Example Data Visualisations
 
 The figures below show example recordings for the letter **B (Uppercase)** of Participant ID 2 repetition 2 in 2D and 3D views, illustrating both the planar trajectory and the 3D time-depth view. Colour encodes the applied force: **blue = minimum force**, **red = maximum force**.
@@ -24,7 +34,7 @@ The figures below show example recordings for the letter **B (Uppercase)** of Pa
 
 ### Collection Setup
 - **Interface:** Stylus-based touchscreen teleoperation interface
-- **Task:** Participants traced alphabet characters (Font: Inter Regular) displayed on screen, controlling a simulated robot on a 2D surface 
+- **Task:** Participants traced alphabet characters (Font: Inter Regular) displayed on screen, controlling a simulated robot on a 2D surface
 - **Screen:** 13.3-inch display at 3840×2160 resolution (pixel size ≈ 0.077 mm)
 - **Active workspace:** 37.59 × 37.59 mm per each square
 - **Sampling Rate:** 40 Hz
@@ -45,7 +55,6 @@ Each CSV file (e.g. `A_Lowercase.csv`) contains the following columns:
 
 | Column | Description | Unit |
 |---|---|---|
-|---|---|---|
 | `participant` | Participant ID number | — |
 | `repetition` | Repetition index (1, 2, or 3) | — |
 | `x_mm` | Stylus X position on the touchscreen | mm |
@@ -61,7 +70,7 @@ All trajectories were manually inspected using an interactive MATLAB browser. Tr
 
 ## Dataset Statistics
 
-The following statistics were computed across all 3,142 demonstration trajectories after quality inspection, using `Data_Analysis.m` (Section 3).
+The following statistics were computed across all 3,142 demonstration trajectories after quality inspection, using `Scripts Used/Data_Analysis.m` (Section 3).
 
 ### Overview
 
@@ -108,7 +117,7 @@ The following statistics were computed across all 3,142 demonstration trajectori
 To run the MATLAB scripts, follow these steps:
 1. Clone or download this repository
 2. Open MATLAB and set your working directory to the repository root
-3. Open your desired script via **Home → Open → [script_name].m**
+3. Open your desired script from **`Scripts Used/`** via **Home → Open → [script_name].m**
 
 ---
 
@@ -116,7 +125,7 @@ To run the MATLAB scripts, follow these steps:
 
 This script allows you to inspect the raw human input data recorded during the experiments.
 
-- Open the script via **Home → Open → Data_Analysis.m**
+- Open **`Scripts Used/Data_Analysis.m`**
 - Edit the settings at the top of the script to select the character you want to inspect:
 
 **Example — inspect all Lowercase L recordings:**
@@ -134,7 +143,7 @@ VIS_MODE      = 2;            % 1 = three 2D panels  |  2 = 3D view
 
 This script displays the final trajectories produced by the robot learning algorithm, which can be used as reference paths for robotic manipulation tasks.
 
-- Open the script via **Home → Open → Robot_Learning_Code.m**
+- Open **`Scripts Used/Robot_Learning_Code.m`**
 - Edit the following line to select the desired character and case combination:
 
 ```matlab
@@ -146,21 +155,23 @@ CHAR_ID = 'E_Uppercase';
 
 ### 3 - Supporting Scripts
 
-**`MixtureGaussians.m`** and **`SkillGeneralisation.m`**: These contain helper functions called by `Robot_Learning_Code.m`. They cannot be run independently, place them in the same folder so they can be located automatically.
+**`MixtureGaussians.m`** and **`SkillGeneralisation.m`**: These contain helper functions called by `Robot_Learning_Code.m`. They cannot be run independently; place them in the same **`Scripts Used/`** folder so they can be located automatically.
 
-**`Prepare_4D_mat_file.m`**: Prepares the raw human input data for the robot learning algorithm. You do not need to run this script, as the generated files are already included in the `Data_for_RL_4D` folder. It is provided for researchers who wish to reproduce or adapt the data preparation pipeline.
+**`Prepare_4D_mat_file.m`**: Prepares the raw human input data for the robot learning algorithm. You do not need to run this script, as the generated files are already included in **`Experiment Data/Data_for_RL_4D/`**. It is provided for researchers who wish to reproduce or adapt the data preparation pipeline.
+
+**`Robot_Learning_Code_Live.pdf`**: Supporting documentation for the robot learning code.
 
 ---
 
-## CSV Data Folders
+## Experiment Data Folders
 
-There are three folders containing character data in `.csv` format, each serving a different purpose:
+The **`Experiment Data/`** folder contains three subfolders containing character data in `.csv` and `.mat` formats, each serving a different purpose:
 
-1. **`Experiment_Character_Data_csv`**: Raw data recorded directly from human user studies (unprocessed human input). This is intended for researchers who wish to use the original recordings to train their own algorithms.
+1. **`Experiment Data/Experiment_Character_Data_csv`**: Raw data recorded directly from human user studies (unprocessed human input). This is intended for researchers who wish to use the original recordings to train their own algorithms.
 
-2. **`Data_for_RL_4D`**: Processed human input data using time as an additional dimension, with normalised time handled separately, giving four dimensions: x (mm), y (mm), force (N), and time (s). Also includes the first and second derivatives of these signals with respect to normalised time, for use with `Robot_Learning_Code.m`. These files were generated using `Prepare_4D_mat_file.m`.
+2. **`Experiment Data/Data_for_RL_4D`**: Processed human input data using time as an additional dimension, with normalised time handled separately, giving four dimensions: x (mm), y (mm), force (N), and time (s). Also includes the first and second derivatives of these signals with respect to normalised time, for use with `Robot_Learning_Code.m`. These files were generated using `Prepare_4D_mat_file.m`.
 
-3. **`RL_Generated_Character_Data_csv`**: Trajectories generated by the robot learning algorithm, intended for use as reference paths in robotic motion tasks.
+3. **`Experiment Data/RL_Generated_Character_Data_csv`**: Trajectories generated by the robot learning algorithm, intended for use as reference paths in robotic motion tasks.
 
 ---
 
@@ -187,13 +198,15 @@ The preprint is available on arXiv:
 https://arxiv.org/abs/2608.06221
 
 ```bibtex
-@misc{kenan2026robot,
+@inproceedings{kenan2026robot,
   title        = {Robot Learning from Human Demonstrations: Handwritten Alphabet Trajectories and Human-Likeness Evaluation},
   author       = {Kenan, Alperen and Bremner, Paul and Giuliani, Manuel},
+  booktitle    = {2026 IEEE International Conference on Development and Learning (ICDL)},
   year         = {2026},
+  address      = {Kyoto, Japan},
+  note         = {Accepted for presentation, 15--18 September 2026},
   eprint       = {2608.06221},
-  archivePrefix = {arXiv},
-  primaryClass = {cs.RO}
+  archivePrefix = {arXiv}
 }
 ```
 
