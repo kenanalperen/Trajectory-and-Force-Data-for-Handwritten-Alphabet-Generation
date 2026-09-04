@@ -1,3 +1,5 @@
+![ICDL 2026](Some_figures/ICDL_2026.gif)
+
 # Trajectory and Force Data for Handwritten Alphabet Generation
 
 This repository contains a dataset of human handwriting trajectory and stylus force recordings for all 26 letters of the Latin alphabet (both uppercase and lowercase), collected through a user study on robot teleoperation via a touchscreen interface. The data is intended to support research in robot learning from demonstration, human-robot interaction (HRI), and trajectory generation for robotic handwriting tasks.
@@ -42,6 +44,7 @@ The figures below show example recordings for the letter **B (Uppercase)** of Pa
 Each CSV file (e.g. `A_Lowercase.csv`) contains the following columns:
 
 | Column | Description | Unit |
+|---|---|---|
 |---|---|---|
 | `participant` | Participant ID number | — |
 | `repetition` | Repetition index (1, 2, or 3) | — |
@@ -173,10 +176,25 @@ There are three folders containing character data in `.csv` format, each serving
 
 ## Citation
 
-If you use this dataset in your research, please cite:
+If you use this dataset or the associated work in your research, please cite the following paper:
 
-```
-[Citation details to be added upon publication]
+> Alperen Kenan, Paul Bremner, and Manuel Giuliani. *Robot Learning from Human Demonstrations: Handwritten Alphabet Trajectories and Human-Likeness Evaluation*. Accepted for presentation at the IEEE International Conference on Development and Learning (ICDL) 2026, Kyoto, Japan, 15–18 September 2026.
+
+### Preprint
+
+The preprint is available on arXiv:
+
+https://arxiv.org/abs/2608.06221
+
+```bibtex
+@misc{kenan2026robot,
+  title        = {Robot Learning from Human Demonstrations: Handwritten Alphabet Trajectories and Human-Likeness Evaluation},
+  author       = {Kenan, Alperen and Bremner, Paul and Giuliani, Manuel},
+  year         = {2026},
+  eprint       = {2608.06221},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.RO}
+}
 ```
 
 ---
